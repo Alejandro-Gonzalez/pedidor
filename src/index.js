@@ -10,12 +10,12 @@ import registerServiceWorker from './registerServiceWorker';
 const store = create();
 
 var config = {
-	apiKey: 'AIzaSyCWm5S_eGkPWct1G-5qRIQv9ROANUAKuDc',
-	authDomain: 'appp-3a783.firebaseapp.com',
-	databaseURL: 'https://appp-3a783.firebaseio.com',
-	projectId: 'appp-3a783',
-	storageBucket: 'appp-3a783.appspot.com',
-	messagingSenderId: '363179653726'
+	apiKey: 'XXXXXXXXXXXXXXXXXXXXXXX',
+	authDomain: 'XXXXXXXXXXX.firebaseapp.com',
+	databaseURL: 'https://XXXXXXXXXX.firebaseio.com',
+	projectId: 'XXXXXXXXXX',
+	storageBucket: 'XXXXXXXXXX.appspot.com',
+	messagingSenderId: 'XXXXXXXXXX'
 };
 
 firebase.initializeApp(config);
