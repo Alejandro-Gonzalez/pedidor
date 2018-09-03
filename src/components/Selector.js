@@ -10,7 +10,7 @@ const Selector = ({ input, label, getOptions, meta: { error, submitFailed } }) =
 			name="form-field-name"
 			options={getOptions()}
 		/>
-		{submitFailed && error && <span>{error}</span>}
+		{submitFailed && error && <span className="app__form-error">{error}</span>}
 
 	</div>
 );

@@ -20,9 +20,8 @@ const renderField = ({ input, defaultValue, label, type, meta: { touched, error 
 				{...input}
 				value={input.value}
 				type={type}
-				placeholder={label}
 			/>
-			{touched && error && <span>{error}</span>}
+			{touched && error && <span className="app__form-error">{error}</span>}
 		</div>
 	</div>
 );
@@ -30,7 +29,7 @@ const renderField = ({ input, defaultValue, label, type, meta: { touched, error 
 const renderMembers = ({ fields, getOptions, meta: { error, submitFailed } }) => (
 	<div className="app__form-wrapper">
 		
-		{submitFailed && error && <span>{error}</span>}
+		{submitFailed && error && <span className="app__form-error">{error}</span>}
 		<ul>
 			{
 				fields.map((member, index, data) => (
@@ -49,13 +48,15 @@ const renderMembers = ({ fields, getOptions, meta: { error, submitFailed } }) =>
 							getOptions={() => getOptions(data.get(index))}
 							label="Gusto"
 						/>
-						<button
-							type="button"
-							title="Remove Member"
-							onClick={() => fields.remove(index)}
-						>
-							REMOVER
-						</button>
+						<span className="app__form-remove">
+
+							<button
+								type="button"
+								onClick={() => fields.remove(index)}
+							>
+								REMOVER
+							</button>
+						</span>
 					</li>
 				))
 			}

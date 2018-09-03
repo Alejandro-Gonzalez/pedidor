@@ -176,13 +176,15 @@ class Main extends React.Component {
 								</p>	
 								<div className="main__order-actions">
 									<button
+										className="remove"
 										onClick={() => this.deleteOrder(data)}
-										>
+									>
 										ELIMINAR
 									</button>
 									<button
+										className="edit"
 										onClick={() => this.editOrder(data)}
-										>
+									>
 										EDITAR
 									</button>
 								</div>
@@ -201,7 +203,7 @@ class Main extends React.Component {
 							{
 								all.map(order => (
 									<li>
-										{order.quantity} - {order.name}
+										<strong>{order.quantity}</strong> - {order.name}
 									</li>
 								))
 							}
@@ -211,7 +213,7 @@ class Main extends React.Component {
 										<br />
 										<hr />
 										<li>{quantity} empanadas</li>
-										<li>Precio final, $ {quantity * 32}</li>
+										<li>Precio final,   <strong> $ {quantity * 32}</strong></li>
 									</Fragment>
 								:
 									null
