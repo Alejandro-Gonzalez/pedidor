@@ -12,7 +12,8 @@ class Main extends React.Component {
 		this.state = {
 			types: [],
 			orders: [],
-			orderTypes: []
+			orderTypes: [],
+			pricePerUnit: 35
 		};
 
 		this.database = this.props.database;
@@ -102,6 +103,10 @@ class Main extends React.Component {
 			value: id
 		}));
 	}
+
+	setPricePerUnit(e) {
+		console.log(e.target)
+	}
 	
 	getAllTypes() {
 		let all = this.state.orders.reduce((accum, order) => {
@@ -132,6 +137,7 @@ class Main extends React.Component {
 	}
 
 	render() {
+		const { pricePerUnit } = this.state;
 		const all = this.getAllTypes();
 		const quantity = all.reduce((accum, order) => {
 			return order.quantity + accum;
@@ -172,7 +178,7 @@ class Main extends React.Component {
 									{
 										data.types.reduce((accum, { quantity }) => (
 											accum += Number(quantity)
-										), 0) * 32
+										), 0) * pricePerUnit
 									}
 								</p>	
 								<div className="main__order-actions">
