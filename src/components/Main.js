@@ -220,7 +220,7 @@ class Main extends React.Component {
 										<br />
 										<hr />
 										<li>{quantity} empanadas</li>
-										<li>Precio final,   <strong> $ {quantity * 32}</strong></li>
+										<li>Precio final,   <strong> $ {quantity * pricePerUnit}</strong></li>
 									</Fragment>
 								:
 									null
