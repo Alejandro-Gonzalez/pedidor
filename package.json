@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://alejandro-gonzalez.github.io/pedidor",
   "dependencies": {
     "@spernigotti/minicart": "^1.0.13",
     "autoprefixer": "7.1.6",
@@ -59,7 +60,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -104,6 +107,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   }
