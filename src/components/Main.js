@@ -13,7 +13,7 @@ class Main extends React.Component {
 			types: [],
 			orders: [],
 			orderTypes: [],
-			pricePerUnit: 38
+			pricePerUnit: 45
 		};
 
 		this.database = this.props.database;
