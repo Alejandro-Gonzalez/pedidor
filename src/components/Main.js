@@ -144,7 +144,9 @@ class Main extends React.Component {
 		}, 0);
 		return (
 			<div className="app__container">
-				<img className="main__logo" src="https://media1.tenor.com/images/0a853c5f0f2216fad17fb4178a3dd3e2/tenor.gif?itemid=11559489" />	
+				<div>
+					<img className="main__logo" src="https://media1.tenor.com/images/0a853c5f0f2216fad17fb4178a3dd3e2/tenor.gif?itemid=11559489" />	
+				</div>
 				<Form
 					getOptions={this.getOptions}
 					onSubmit={this.submit}
