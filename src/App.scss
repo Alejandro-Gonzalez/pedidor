@@ -40,6 +40,9 @@ label{
 	cursor: pointer;
 }
 .app{
+	&__container{
+		padding-top: 40px;
+	}
 	&__auth-container,
 	&__container{
 		display: flex;
@@ -134,7 +137,7 @@ label{
 				@extend %button;
 				margin: 15px 0;
 				width: calc(50% - 10px);
-				
+
 			}
 		}
 	}

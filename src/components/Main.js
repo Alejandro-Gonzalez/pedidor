@@ -13,11 +13,11 @@ class Main extends React.Component {
 			types: [],
 			orders: [],
 			orderTypes: [],
-			pricePerUnit: 49
+			pricePerUnit: 55
 		};
 
 		this.database = this.props.database;
-		
+
 		this.typesRef = this.database.ref('types/');
 		this.ordersRef = this.database.ref('orders/');
 		this.listeners();
@@ -29,7 +29,7 @@ class Main extends React.Component {
 		this.updateOrder = this.updateOrder.bind(this);
 		this.deleteOrder = this.deleteOrder.bind(this);
 	}
-	
+
 	objToArrayObj(obj) {
 		if(!obj)
 			return [];
@@ -41,17 +41,17 @@ class Main extends React.Component {
 			return accumulator;
 		}, []);
 	}
-	
+
 	listeners() {
 		this.typesRef.on('value', (snapshot) => {
 			this.setState({ types: this.objToArrayObj(snapshot.val()) });
 		});
-		
+
 		this.ordersRef.on('value', (snapshot) => {
 			this.setState({ orders: this.objToArrayObj(snapshot.val()) });
 		});
 	}
-	
+
 	handleClick() {
 		this.setState(prevState => ({
 			modalActive: !prevState.modalActive
@@ -61,7 +61,7 @@ class Main extends React.Component {
 	formClear() {
 		this.props.reset('form');
 	}
-	
+
 	setType(data){
 		this.typesRef.push(data);
 	}
@@ -70,7 +70,7 @@ class Main extends React.Component {
 		this.ordersRef.push(data);
 		this.formClear();
 	}
-	
+
 	deleteOrder({ uid }) {
 		this.database.ref(`orders/${uid}`).remove();
 	}
@@ -95,7 +95,7 @@ class Main extends React.Component {
 	handleChange(value) {
 		this.setState({ selectedOption: value })
 	}
-	
+
 	getOptions() {
 		const { types } = this.state;
 		return types.map(({id, name}) => ({
@@ -107,7 +107,7 @@ class Main extends React.Component {
 	setPricePerUnit(e) {
 		console.log(e.target)
 	}
-	
+
 	getAllTypes() {
 		let all = this.state.orders.reduce((accum, order) => {
 			const accumulator = [...accum, ...order.types]
@@ -116,7 +116,7 @@ class Main extends React.Component {
 
 		all = all.reduce((accum, typeObj) => {
 			let accumulator = [...accum];
-			
+
 			if(!accumulator.some(type => type.id === typeObj.type.value)) {
 				accumulator.push({
 					quantity:  Number(typeObj.quantity),
@@ -145,7 +145,9 @@ class Main extends React.Component {
 		return (
 			<div className="app__container">
 				<div>
-					<img className="main__logo" src="https://media1.tenor.com/images/0a853c5f0f2216fad17fb4178a3dd3e2/tenor.gif?itemid=11559489" />	
+					<marquee behavior="scroll" direction="right">
+						<img className="main__logo" src="https://media1.tenor.com/images/0a853c5f0f2216fad17fb4178a3dd3e2/tenor.gif?itemid=11559489" />
+					</marquee>
 				</div>
 				<Form
 					getOptions={this.getOptions}
@@ -182,7 +184,7 @@ class Main extends React.Component {
 											accum += Number(quantity)
 										), 0) * pricePerUnit
 									}
-								</p>	
+								</p>
 								<div className="main__order-actions">
 									<button
 										className="remove"
@@ -203,7 +205,7 @@ class Main extends React.Component {
 					</div>
 					<div className="main__total">
 						{
-								all.length ? 
+								all.length ?
 									<h4>TOTAL</h4>
 									:
 									''
@@ -217,7 +219,7 @@ class Main extends React.Component {
 								))
 							}
 							{
-								quantity ? 
+								quantity ?
 								<Fragment>
 										<br />
 										<hr />
