@@ -13,13 +13,14 @@ class Main extends React.Component {
 			types: [],
 			orders: [],
 			orderTypes: [],
-			pricePerUnit: 55
+			pricePerUnit: 0
 		};
 
 		this.database = this.props.database;
 
 		this.typesRef = this.database.ref('types/');
 		this.ordersRef = this.database.ref('orders/');
+		this.priceRef = this.database.ref('price/');
 		this.listeners();
 
 		this.handleChange = this.handleChange.bind(this);
@@ -49,6 +50,10 @@ class Main extends React.Component {
 
 		this.ordersRef.on('value', (snapshot) => {
 			this.setState({ orders: this.objToArrayObj(snapshot.val()) });
+		});
+
+		this.priceRef.on('value', (snapshot) => {
+			this.setState({ pricePerUnit: snapshot.val() });
 		});
 	}
 
@@ -142,6 +147,7 @@ class Main extends React.Component {
 		const quantity = all.reduce((accum, order) => {
 			return order.quantity + accum;
 		}, 0);
+
 		return (
 			<div className="app__container">
 				<div>
